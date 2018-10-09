@@ -33,3 +33,19 @@ export const IndexDog = (user) => {
     }
   })
 }
+
+export const EditDog = (dog, user, _id) => {
+  return fetch('http://localhost:4741/dogs/' + _id, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization':`Token token=${user.token}`
+    },
+    body: JSON.stringify({
+      dog: {
+        image: dog.image,
+        description: dog.description
+      }
+    })
+  })
+}

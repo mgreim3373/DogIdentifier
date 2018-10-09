@@ -10,6 +10,7 @@ import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import DogNew from './dogs/components/DogNew'
 import DogIndex from './dogs/components/DogIndex'
+import DogEdit from './dogs/components/DogEdit'
 
 class App extends Component {
   constructor () {
@@ -62,6 +63,10 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/dogs' render={() => (
             <DogIndex user={user} />
           )} />
+          <AuthenticatedRoute user={user} exact path='/dogs/edit' render={() => (
+            <DogEdit user={user} />
+          )} />
+
 
         </main>
       </React.Fragment>
