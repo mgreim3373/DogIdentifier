@@ -49,3 +49,13 @@ export const EditDog = (dog, user, _id) => {
     })
   })
 }
+
+export const DeleteDog = (user, _id) => {
+  return fetch('http://localhost:4741/dogs/' + _id, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization':`Token token=${user.token}`
+    },
+  })
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import * as constants from '../../constants'
-import { handleErrors, IndexDog } from '../api'
+import { handleErrors, IndexDog, DeleteDog } from '../api'
 import { Link } from 'react-router-dom'
 
 class DogIndex extends React.Component {
@@ -9,6 +9,7 @@ class DogIndex extends React.Component {
     this.state = {
       dogs: []
     }
+
   }
 
   async componentDidMount () {
@@ -17,6 +18,13 @@ class DogIndex extends React.Component {
     const resJson = await res.json()
 
     this.setState({dogs: resJson.dogs})
+  }
+
+  DogDelete = (event, dogId) => {
+    event.preventDefault()
+    const { user } = this.props
+    DeleteDog(user, dogId)
+      .then((res)=> console.log('booo'))
   }
 
   render() {
@@ -38,7 +46,7 @@ class DogIndex extends React.Component {
             pathname: `/dogs/${dog._id}/edit`,
             state: { dogId: dog._id }
           }}>Edit Dogs</Link>
-          <button type="submit">Delete Dog</button>
+          <button onClick={(e) => this.DogDelete(e, dog._id)}>X</button>
         </div>
       )}
     )
