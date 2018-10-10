@@ -32,7 +32,10 @@ class DogIndex extends React.Component {
       return (
         <div className='auth-form' key={dog._id}>
           <h3>Dogs</h3>
-          <img src={dog.image} alt="dog" className="img-responsive"/>
+          <Link to={{
+            pathname: `/dogs/${dog._id}/show`,
+            state: { dogId: dog._id }
+          }}><img src={dog.image} alt="dog" className="img-responsive"/></Link>
           <p>{dog.description}</p>
           {dog.label.map((label, index) => {
             return (

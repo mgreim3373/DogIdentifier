@@ -11,6 +11,7 @@ import ChangePassword from './auth/components/ChangePassword'
 import DogNew from './dogs/components/DogNew'
 import DogIndex from './dogs/components/DogIndex'
 import DogEdit from './dogs/components/DogEdit'
+import DogShow from './dogs/components/DogShow'
 
 class App extends Component {
   constructor () {
@@ -65,6 +66,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/dogs/:id/edit' render={() => (
             <DogEdit user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/dogs/:id/show' render={() => (
+            <DogShow user={user} />
           )} />
 
 
