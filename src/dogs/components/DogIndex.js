@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import * as constants from '../../constants'
 import { handleErrors, IndexDog } from '../api'
+import { Link } from 'react-router-dom'
 
 class DogIndex extends React.Component {
   constructor(props) {
@@ -21,19 +22,19 @@ class DogIndex extends React.Component {
   render() {
     const dog = this.state.dogs.map(dog => {
       return (
-        <div className='auth-form' key={dog.id}>
+        <div className='auth-form' key={dog._id}>
           <h3>Dogs</h3>
           <img src={dog.image} alt="dog" className="img-responsive"/>
           <p>{dog.description}</p>
-          {dog.label.map(label => {
+          {dog.label.map((label, index) => {
             return (
-              <div key={dog.id}>
+              <div key={dog._id + index}>
                 <p>{label.description}</p>
                 <p>{label.probability}</p>
               </div>
             )
           })}
-          <button type="submit">Edit Dog</button>
+          <Link to={`/dogs/${dog._id}/edit`}>Edit Dogs</Link>
           <button type="submit">Delete Dog</button>
         </div>
       )}

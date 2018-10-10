@@ -63,7 +63,7 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/dogs' render={() => (
             <DogIndex user={user} />
           )} />
-          <AuthenticatedRoute user={user} exact path='/dogs/edit' render={() => (
+          <AuthenticatedRoute user={user} exact path='/dogs/:id/edit' render={() => (
             <DogEdit user={user} />
           )} />
 
