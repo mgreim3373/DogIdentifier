@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import * as constants from '../../constants'
+import { withRouter } from 'react-router-dom'
 import { handleErrors, CreateDog, EditDog } from '../api'
 
 class DogEdit extends React.Component {
-  constructor() {
-    super()
+
+  constructor(props) {
+
+    super(props)
     this.state = {
       image: '',
       description: '',
@@ -20,8 +23,7 @@ class DogEdit extends React.Component {
     event.preventDefault()
     const { image, description, _id } = this.state
     const { user } = this.props
-    console.log('state', this.state, 'user', user,'id', _id)
-    EditDog(this.state, user, _id)
+    EditDog(this.state, user, this.props.location.state.dogId)
       .then((res)=> this.setState({}))
   }
 
@@ -30,14 +32,6 @@ class DogEdit extends React.Component {
     return (
       <form className='auth-form' onSubmit={this.EditDog}>
         <h3>Edit Dog</h3>
-        <input
-          required
-          type="string"
-          name="_id"
-          value={this.state.id}
-          placeholder="Id"
-          onChange={this.handleChange}
-        />
         <input
           required
           type="string"
@@ -60,4 +54,4 @@ class DogEdit extends React.Component {
 }
 
 
-export default DogEdit
+export default withRouter(DogEdit)

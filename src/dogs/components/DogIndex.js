@@ -34,7 +34,10 @@ class DogIndex extends React.Component {
               </div>
             )
           })}
-          <Link to={`/dogs/${dog._id}/edit`}>Edit Dogs</Link>
+          <Link to={{
+            pathname: `/dogs/${dog._id}/edit`,
+            state: { dogId: dog._id }
+          }}>Edit Dogs</Link>
           <button type="submit">Delete Dog</button>
         </div>
       )}
