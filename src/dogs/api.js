@@ -1,4 +1,6 @@
 import DogNew from './components/DogNew'
+// const apiUrl = 'http://localhost:4741'
+import {apiUrl } from '../apiConfig'
 
 export const handleErrors = res => {
   if (res.ok) {
@@ -9,7 +11,7 @@ export const handleErrors = res => {
 }
 
 export const CreateDog = (dog, user) => {
-  return fetch('http://localhost:4741/dogs', {
+  return fetch(apiUrl + '/dogs', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -25,7 +27,7 @@ export const CreateDog = (dog, user) => {
 }
 
 export const IndexDog = (user) => {
-  return fetch('http://localhost:4741/dogs', {
+  return fetch(apiUrl + '/dogs', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -35,7 +37,7 @@ export const IndexDog = (user) => {
 }
 
 export const EditDog = (dog, user, _id) => {
-  return fetch('http://localhost:4741/dogs/' + _id, {
+  return fetch(apiUrl + '/dogs/' + _id, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -51,7 +53,7 @@ export const EditDog = (dog, user, _id) => {
 }
 
 export const DeleteDog = (user, _id) => {
-  return fetch('http://localhost:4741/dogs/' + _id, {
+  return fetch(apiUrl + '/dogs/' + _id, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -61,7 +63,7 @@ export const DeleteDog = (user, _id) => {
 }
 
 export const ShowDog = (user, _id) => {
-  return fetch('http://localhost:4741/dogs/' + _id, {
+  return fetch(apiUrl + '/dogs/' + _id, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
