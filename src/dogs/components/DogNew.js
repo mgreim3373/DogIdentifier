@@ -21,7 +21,8 @@ class DogCreate extends React.Component {
     const { user } = this.props
 
     CreateDog(this.state, user)
-      .then((res)=> this.setState({}))
+      .then(handleErrors)
+      .then(() => history.push('/dogs'))
   }
 
   render() {

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import * as constants from '../../constants'
 import { withRouter } from 'react-router-dom'
 import { handleErrors, CreateDog, EditDog } from '../api'
+import { Redirect } from 'react-router-dom'
 
 class DogEdit extends React.Component {
 
@@ -11,7 +12,8 @@ class DogEdit extends React.Component {
     this.state = {
       image: '',
       description: '',
-      _id: ''
+      _id: '',
+      toShowDog: 1,
     }
   }
 
@@ -22,35 +24,40 @@ class DogEdit extends React.Component {
   EditDog = event => {
     event.preventDefault()
     const { image, description, _id } = this.state
-    const { user } = this.props
+    const { history, user } = this.props
     EditDog(this.state, user, this.props.location.state.dogId)
-      .then((res)=> this.setState({}))
+      .then(handleErrors)
+      .then(() => history.push('/dogs'))
   }
 
   render() {
-    const {dog} = this.state
-    return (
-      <form className='auth-form' onSubmit={this.EditDog}>
-        <h3>Edit Dog</h3>
-        <input
-          required
-          type="string"
-          name="image"
-          value={this.state.image}
-          placeholder="Image URL"
-          onChange={this.handleChange}
-        />
-        <input
-          required
-          name="description"
-          value={this.state.description}
-          type="string"
-          placeholder="Description"
-          onChange={this.handleChange}
-        />
-        <button type="submit">Edit Dog</button>
-      </form>
-    )}
+    if (this.state.toShowDog === 2 && this.state.toShowDog) {
+      <Redirect to='/' />
+    } else {
+
+      const {dog} = this.state
+      return (
+        <form className='auth-form' onSubmit={this.EditDog}>
+          <h3>Edit Dog</h3>
+          <input
+            required
+            type="string"
+            name="image"
+            value={this.state.image}
+            placeholder="Image URL"
+            onChange={this.handleChange}
+          />
+          <input
+            required
+            name="description"
+            value={this.state.description}
+            type="string"
+            placeholder="Description"
+            onChange={this.handleChange}
+          />
+          <button type="submit">Edit Dog</button>
+        </form>
+      )}}
 }
 
 

@@ -24,7 +24,8 @@ class DogIndex extends React.Component {
     event.preventDefault()
     const { user } = this.props
     DeleteDog(user, dogId)
-      .then((res)=> console.log('booo'))
+      .then(handleErrors)
+      .then(() => history.push('/dogs'))
   }
 
   render() {
@@ -45,6 +46,7 @@ class DogIndex extends React.Component {
               </div>
             )
           })}
+          {console.log('hi',dog._id)}
           <Link to={{
             pathname: `/dogs/${dog._id}/edit`,
             state: { dogId: dog._id }
