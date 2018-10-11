@@ -16,9 +16,10 @@ class DogShow extends React.Component {
 
   DogDelete = (event, dogId) => {
     event.preventDefault()
-    const { user } = this.props
+    const { user, history } = this.props
     DeleteDog(user, dogId)
-      .then((res)=> console.log('booo'))
+      .then(handleErrors)
+      .then(() => history.push('/'))
   }
 
   async componentDidMount () {
