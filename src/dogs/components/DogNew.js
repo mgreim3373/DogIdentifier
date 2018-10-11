@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import * as constants from '../../constants'
+import { withRouter } from 'react-router-dom'
 import { handleErrors, CreateDog, IndexDog } from '../api'
+import { Redirect } from 'react-router-dom'
 
 class DogCreate extends React.Component {
   constructor() {
@@ -18,7 +20,8 @@ class DogCreate extends React.Component {
   CreateDog = event => {
     event.preventDefault()
     const { image, description } = this.state
-    const { user } = this.props
+    const { user, history } = this.props
+    console.log('historyEdit',{history})
 
     CreateDog(this.state, user)
       .then(handleErrors)
@@ -52,4 +55,4 @@ class DogCreate extends React.Component {
 }
 
 
-export default DogCreate
+export default withRouter(DogCreate)

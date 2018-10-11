@@ -3,6 +3,7 @@ import * as constants from '../../constants'
 import { handleErrors, ShowDog, DeleteDog } from '../api'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 class DogShow extends React.Component {
   constructor(props) {

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import * as constants from '../../constants'
 import { handleErrors, IndexDog, DeleteDog } from '../api'
 import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 class DogIndex extends React.Component {
   constructor(props) {
@@ -22,10 +24,10 @@ class DogIndex extends React.Component {
 
   DogDelete = (event, dogId) => {
     event.preventDefault()
-    const { user } = this.props
+    const { user, history } = this.props
     DeleteDog(user, dogId)
       .then(handleErrors)
-      .then(() => history.push('/dogs'))
+      .then(() => history.push('/'))
   }
 
   render() {
@@ -46,7 +48,6 @@ class DogIndex extends React.Component {
               </div>
             )
           })}
-          {console.log('hi',dog._id)}
           <Link to={{
             pathname: `/dogs/${dog._id}/edit`,
             state: { dogId: dog._id }
@@ -64,4 +65,4 @@ class DogIndex extends React.Component {
   }
 }
 
-export default DogIndex
+export default withRouter(DogIndex)
