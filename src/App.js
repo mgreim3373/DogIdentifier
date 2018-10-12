@@ -59,7 +59,7 @@ class App extends Component {
             <ChangePassword flash={this.flash} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/dogs/new' render={() => (
-            <DogNew user={user} />
+            <DogNew flash={this.flash} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/dogs' render={() => (
             <DogIndex user={user} />

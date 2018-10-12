@@ -3,6 +3,7 @@ import * as constants from '../../constants'
 import { withRouter } from 'react-router-dom'
 import { handleErrors, CreateDog, EditDog } from '../api'
 import { Redirect } from 'react-router-dom'
+import messages from '../messages'
 
 class DogEdit extends React.Component {
 
@@ -24,7 +25,6 @@ class DogEdit extends React.Component {
     event.preventDefault()
     const { image, description, _id } = this.state
     const { history, user } = this.props
-    console.log('historyEdit',{history})
     EditDog(this.state, user, this.props.location.state.dogId)
       .then(handleErrors)
       .then(() => history.push('/dogs/'))

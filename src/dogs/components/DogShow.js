@@ -26,7 +26,6 @@ class DogShow extends React.Component {
     const { history, user } = this.props
     const res = await ShowDog(user, this.props.location.state.dogId)
     const resJson = await res.json()
-    console.log('sdfjksldj', resJson.dog)
 
     this.setState({dog: resJson.dog})
 

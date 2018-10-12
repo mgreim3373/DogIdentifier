@@ -1,5 +1,4 @@
 import DogNew from './components/DogNew'
-// const apiUrl = 'http://localhost:4741'
 import { apiUrl } from '../apiConfig'
 
 export const handleErrors = res => {

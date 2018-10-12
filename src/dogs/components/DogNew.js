@@ -3,6 +3,7 @@ import * as constants from '../../constants'
 import { withRouter } from 'react-router-dom'
 import { handleErrors, CreateDog, IndexDog } from '../api'
 import { Redirect } from 'react-router-dom'
+import messages from '../messages'
 
 class DogCreate extends React.Component {
   constructor() {
@@ -20,12 +21,11 @@ class DogCreate extends React.Component {
   CreateDog = event => {
     event.preventDefault()
     const { image, description } = this.state
-    const { user, history } = this.props
-    console.log('historyEdit',{history})
+    const { flash, user, history } = this.props
 
     CreateDog(this.state, user)
-      .then(handleErrors)
       .then(() => history.push('/dogs'))
+      .catch(() => flash(messages.newDogFailure, 'flash-error'))
   }
 
   render() {
@@ -33,6 +33,7 @@ class DogCreate extends React.Component {
     return (
       <form className='auth-form' onSubmit={this.CreateDog}>
         <h3>New Dog</h3>
+        <h5>Entering an incorrect image url can lead to long wait times.</h5>
         <input
           required
           type="string"

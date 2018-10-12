@@ -4,6 +4,7 @@ import { handleErrors, IndexDog, DeleteDog } from '../api'
 import { Link } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
+import messages from '../messages'
 
 class DogIndex extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class DogIndex extends React.Component {
     const dog = this.state.dogs.map(dog => {
       return (
         <div className='auth-form' key={dog._id}>
-          <h3>Dogs</h3>
+          <h3>Dog</h3>
           <Link to={{
             pathname: `/dogs/${dog._id}/show`,
             state: { dogId: dog._id }
