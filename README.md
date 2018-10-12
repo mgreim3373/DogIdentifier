@@ -34,7 +34,10 @@ Wireframe(add_dog): https://github.com/mgreim3373/DogIdentifier/blob/master/Wire
 Wireframe(sign_in): https://github.com/mgreim3373/DogIdentifier/blob/master/Wire_Frame-Sign_In.jpg
 User stories: https://github.com/mgreim3373/DogIdentifier/blob/master/Wire_Frame-Sign_In.jpg
 
+## Application Screenshots 
 
-
+![Display Dog Page](https://github.com/mgreim3373/DogIdentifier/blob/master/ShowDog.jpg?raw=true)
+![Create Dog Page](https://github.com/mgreim3373/DogIdentifier/blob/master/CreateDog.jpg?raw=true)
+![login Page](https://github.com/mgreim3373/DogIdentifier/blob/master/Login.jpg?raw=true)
 
 
