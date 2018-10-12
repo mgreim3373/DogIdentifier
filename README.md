@@ -29,11 +29,14 @@ Back-end deployed site: https://pure-wildwood-82080.herokuapp.com/
 
 Back-end repo: https://github.com/mgreim3373/DogIdentifier---BackEnd
 
-##Wireframes and User Stories
+## Wireframes and User Stories
 
 Wireframe(home):https://github.com/mgreim3373/DogIdentifier/blob/master/Wire_Frame-Home.jpg
+
 Wireframe(add_dog): https://github.com/mgreim3373/DogIdentifier/blob/master/Wire_Frame-Add_Dog.jpg
+
 Wireframe(sign_in): https://github.com/mgreim3373/DogIdentifier/blob/master/Wire_Frame-Sign_In.jpg
+
 User stories: https://github.com/mgreim3373/DogIdentifier/blob/master/Wire_Frame-Sign_In.jpg
 
 ## Application Screenshots 
