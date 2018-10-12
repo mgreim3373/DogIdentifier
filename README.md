@@ -24,7 +24,9 @@ React, JSX, HTML, Sass, Bootstrap, Github, custom built API, Google Vision API, 
 ## Project Links
 
 Front-end deployed site: https://mgreim3373.github.io/DogIdentifier/#/
+
 Back-end deployed site: https://pure-wildwood-82080.herokuapp.com/
+
 Back-end repo: https://github.com/mgreim3373/DogIdentifier---BackEnd
 
 ##Wireframes and User Stories
