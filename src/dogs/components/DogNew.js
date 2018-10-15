@@ -7,7 +7,10 @@ import messages from '../messages'
 
 import S3FileUpload from 'react-s3'
 import { uploadFile } from 'react-s3'
+import Dropzone from 'react-dropzone'
 
+const acceptedFileTypes = 'image/png, image/jpg, image/jpeg'
+const acceptedFileTypesArray = acceptedFileTypes.split(',').map((item) => {return item.trim()})
 const config = {
   bucketName: 'dog-identifier',
   region: 'us-east-1',
@@ -24,7 +27,41 @@ class DogCreate extends React.Component {
     }
   }
 
-  upload = (e) => {
+  verifyFile = (files) => {
+    if (files && files.length > 0){
+      const currentFile = files[0]
+      const currentFileType = currentFile.type
+      if(!acceptedFileTypesArray.includes(currentFileType)){
+        alert('do better')
+        return false
+      }
+      return true
+    }
+  }
+
+  handleOnDrop = (files, rejectedFiles) => {
+    if (rejectedFiles && rejectedFiles.length > 0){
+      this.verifyFile(rejectedFiles)
+    }
+
+    if (files && files.length > 0){
+      const isVerified = this.verifyFile(files)
+      if (isVerified){
+        S3FileUpload.uploadFile(files[0], config)
+          .then((data)=> {
+            this.setState({
+              image: data.location
+            })
+          })
+          .catch( (err)=>{
+            console.log(err)
+          })
+      }
+    }
+  }
+
+
+  /*upload = (e) => {
     S3FileUpload.uploadFile(e.target.files[0], config)
       .then((data)=> {
         this.setState({
@@ -34,7 +71,7 @@ class DogCreate extends React.Component {
       .catch( (err)=>{
         console.log(err)
       })
-  }
+  }*/
 
   handleChange = event => this.setState({
     [event.target.name]: event.target.value
@@ -58,11 +95,7 @@ class DogCreate extends React.Component {
       <form className='auth-form' onSubmit={this.CreateDog}>
         <h3>New Dog</h3>
         <h5>Entering an incorrect image url can lead to long wait times.</h5>
-        <input
-          required
-          type="file"
-          onChange={this.upload}
-        />
+        <Dropzone onDrop={this.handleOnDrop} accept={acceptedFileTypes}>hi</Dropzone>
         <input
           required
           name="description"
