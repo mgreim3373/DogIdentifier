@@ -1,36 +1,30 @@
 import React, { Component } from 'react'
 import * as constants from '../../constants'
 import { withRouter } from 'react-router-dom'
-import { handleErrors, CreateDog, IndexDog } from '../api'
+import { handleErrors, CreateDog, IndexDog, UploadAS3 } from '../api'
 import { Redirect } from 'react-router-dom'
 import messages from '../messages'
+const axios = require('axios')
+import { apiUrl } from '../../apiConfig'
 
-import S3FileUpload from 'react-s3'
-import { uploadFile } from 'react-s3'
 import Dropzone from 'react-dropzone'
 
 const acceptedFileTypes = 'image/png, image/jpg, image/jpeg'
 const acceptedFileTypesArray = acceptedFileTypes.split(',').map((item) => {return item.trim()})
-const config = {
-  bucketName: 'dog-identifier',
-  region: 'us-east-1',
-  accessKeyId: 'AKIAJ73SAFYPQM4RTXJA',
-  secretAccessKey: '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',
-}
 
 class DogCreate extends React.Component {
   constructor() {
     super()
     this.state = {
       image: '',
-      description: ''
+      description: '',
+      file: null
     }
   }
 
   verifyFile = (files) => {
     if (files && files.length > 0){
-      const currentFile = files[0]
-      const currentFileType = currentFile.type
+      const currentFileType = files[0].type
       if(!acceptedFileTypesArray.includes(currentFileType)){
         alert('do better')
         return false
@@ -47,10 +41,13 @@ class DogCreate extends React.Component {
     if (files && files.length > 0){
       const isVerified = this.verifyFile(files)
       if (isVerified){
-        S3FileUpload.uploadFile(files[0], config)
+        console.log('kh', files)
+        const fd = new FormData()
+        fd.append('image', files[0], files[0].name)
+        axios.post(apiUrl + '/image-upload', fd)
           .then((data)=> {
             this.setState({
-              image: data.location
+              image: data.data.imageUrl
             })
           })
           .catch( (err)=>{
@@ -59,19 +56,6 @@ class DogCreate extends React.Component {
       }
     }
   }
-
-
-  /*upload = (e) => {
-    S3FileUpload.uploadFile(e.target.files[0], config)
-      .then((data)=> {
-        this.setState({
-          image: data.location
-        })
-      })
-      .catch( (err)=>{
-        console.log(err)
-      })
-  }*/
 
   handleChange = event => this.setState({
     [event.target.name]: event.target.value
