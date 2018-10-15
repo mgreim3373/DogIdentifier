@@ -38,14 +38,6 @@ class DogEdit extends React.Component {
         <h3>Edit Dog</h3>
         <input
           required
-          type="string"
-          name="image"
-          value={this.state.image}
-          placeholder="Image URL"
-          onChange={this.handleChange}
-        />
-        <input
-          required
           name="description"
           value={this.state.description}
           type="string"

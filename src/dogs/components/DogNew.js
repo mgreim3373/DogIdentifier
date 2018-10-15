@@ -13,12 +13,13 @@ const acceptedFileTypes = 'image/png, image/jpg, image/jpeg'
 const acceptedFileTypesArray = acceptedFileTypes.split(',').map((item) => {return item.trim()})
 
 class DogCreate extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       image: '',
       description: '',
-      file: null
+      file: null,
+      imgSrc: null
     }
   }
 
@@ -41,7 +42,14 @@ class DogCreate extends React.Component {
     if (files && files.length > 0){
       const isVerified = this.verifyFile(files)
       if (isVerified){
-        console.log('kh', files)
+        const currentFile = files[0]
+        const reader = new FileReader()
+        reader.addEventListener('load', ()=>{
+          this.setState({
+            imgSrc: reader.result
+          })
+        }, false)
+        reader.readAsDataURL(currentFile)
         const fd = new FormData()
         fd.append('image', files[0], files[0].name)
         axios.post(apiUrl + '/image-upload', fd)
@@ -51,7 +59,6 @@ class DogCreate extends React.Component {
             })
           })
           .catch( (err)=>{
-            console.log(err)
           })
       }
     }
@@ -74,12 +81,16 @@ class DogCreate extends React.Component {
   }
 
   render() {
-    const {dog} = this.state
+    const {imgSrc} = this.state
     return (
       <form className='auth-form' onSubmit={this.CreateDog}>
         <h3>New Dog</h3>
         <h5>Entering an incorrect image url can lead to long wait times.</h5>
-        <Dropzone onDrop={this.handleOnDrop} accept={acceptedFileTypes}>hi</Dropzone>
+        {imgSrc !== null ?
+          <div>
+            <img src={imgSrc} />
+          </div>:
+          <Dropzone onDrop={this.handleOnDrop} accept={acceptedFileTypes}>hi</Dropzone>}
         <input
           required
           name="description"
