@@ -5,6 +5,16 @@ import { handleErrors, CreateDog, IndexDog } from '../api'
 import { Redirect } from 'react-router-dom'
 import messages from '../messages'
 
+import S3FileUpload from 'react-s3'
+import { uploadFile } from 'react-s3'
+
+const config = {
+  bucketName: 'dog-identifier',
+  region: 'us-east-1',
+  accessKeyId: 'AKIAJ73SAFYPQM4RTXJA',
+  secretAccessKey: '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',
+}
+
 class DogCreate extends React.Component {
   constructor() {
     super()
@@ -12,6 +22,18 @@ class DogCreate extends React.Component {
       image: '',
       description: ''
     }
+  }
+
+  upload = (e) => {
+    S3FileUpload.uploadFile(e.target.files[0], config)
+      .then((data)=> {
+        this.setState({
+          image: data.location
+        })
+      })
+      .catch( (err)=>{
+        console.log(err)
+      })
   }
 
   handleChange = event => this.setState({
@@ -22,6 +44,8 @@ class DogCreate extends React.Component {
     event.preventDefault()
     const { image, description } = this.state
     const { flash, user, history } = this.props
+
+    console.log('help', this.state)
 
     CreateDog(this.state, user)
       .then(() => history.push('/dogs'))
@@ -36,11 +60,8 @@ class DogCreate extends React.Component {
         <h5>Entering an incorrect image url can lead to long wait times.</h5>
         <input
           required
-          type="string"
-          name="image"
-          value={this.state.image}
-          placeholder="Image URL"
-          onChange={this.handleChange}
+          type="file"
+          onChange={this.upload}
         />
         <input
           required
