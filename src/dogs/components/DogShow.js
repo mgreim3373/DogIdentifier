@@ -4,6 +4,7 @@ import { handleErrors, ShowDog, DeleteDog } from '../api'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
+import DogEdit from './DogEdit'
 
 class DogShow extends React.Component {
   constructor(props) {
@@ -46,6 +47,7 @@ class DogShow extends React.Component {
             </div>
           )
         })}
+        <DogEdit user = {this.props} />
         <Link to={{
           pathname: `/dogs/${dog._id}/edit`,
           state: { dogId: dog._id }
