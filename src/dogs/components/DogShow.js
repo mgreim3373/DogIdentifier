@@ -5,12 +5,15 @@ import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
 import DogEdit from './DogEdit'
+import DogGraph from './DogGraph'
 
 class DogShow extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      dog: null
+      dog: null,
+      graphLabels: [],
+      graphData: []
     }
 
   }
@@ -27,31 +30,30 @@ class DogShow extends React.Component {
     const { history, user } = this.props
     const res = await ShowDog(user, this.props.location.state.dogId)
     const resJson = await res.json()
+    const dogData = {
+      graphLabels: [],
+      graphData: []
+    }
 
-    this.setState({dog: resJson.dog})
+    resJson.dog.label.map((label, index) => {
+      dogData.graphLabels.push(label.description)
+      dogData.graphData.push(label.probability)
+      return label
+    })
 
+    this.setState({dog: resJson.dog,
+      graphLabels: dogData.graphLabels,
+      graphData: dogData.graphData})
   }
 
   render() {
-    const{dog} = this.state
+    const{dog, graphLables, graphData} = this.state
     const dogElement = dog && (
       <div className='auth-form' key={dog._id}>
         <h3>Dogs</h3>
         <img src={dog.image} alt="dog" className="img-responsive"/>
         <p>{dog.description}</p>
-        {dog.label.map((label, index) => {
-          return (
-            <div key={dog._id + index}>
-              <p>{label.description}</p>
-              <p>{label.probability}</p>
-            </div>
-          )
-        })}
         <DogEdit user = {this.props} />
-        <Link to={{
-          pathname: `/dogs/${dog._id}/edit`,
-          state: { dogId: dog._id }
-        }}>Edit Dogs</Link>
         <button onClick={(e) => this.DogDelete(e, dog._id)}>X</button>
       </div>
     )
@@ -59,6 +61,7 @@ class DogShow extends React.Component {
     return (
       <div>
         {dogElement}
+        <DogGraph graphLabels = {this.state.graphLabels} graphData = {this.state.graphData} />
       </div>
     )
   }
