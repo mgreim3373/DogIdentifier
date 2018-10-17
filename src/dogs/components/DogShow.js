@@ -7,6 +7,7 @@ import { Redirect } from 'react-router-dom'
 import DogEdit from './DogEdit'
 import DogGraph from './DogGraph'
 
+
 class DogShow extends React.Component {
   constructor(props) {
     super(props)
@@ -58,12 +59,14 @@ class DogShow extends React.Component {
       </div>
     )
     let dogGraphDisplay
-    if (this.state.graphLabels[0] !== 'Not a dog!') {
-      dogGraphDisplay = <DogGraph graphLabels = {this.state.graphLabels} graphData = {this.state.graphData} />
-    } else {
+    if (this.state.graphLabels[0] == 'Unknown Dog') {
+      dogGraphDisplay = <p>Unknown dog!</p>
+    } else if (this.state.graphLabels[0] == 'Not a dog!') {
       dogGraphDisplay = <p>Not a dog!</p>
+    } else if (this.state.graphLabels[0] !== 'Not a dog!') {
+      dogGraphDisplay = <DogGraph graphLabels = {this.state.graphLabels} graphData = {this.state.graphData} />
     }
-    {console.log(this.state.graphLabels[0])}
+
     return (
       <div>
         {this.state.graphLabels}
