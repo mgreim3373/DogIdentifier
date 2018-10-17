@@ -41,14 +41,6 @@ class DogIndex extends React.Component {
             state: { dogId: dog._id }
           }}><img src={dog.image} alt="dog" className="img-responsive"/></Link>
           <p>{dog.description}</p>
-          {dog.label.map((label, index) => {
-            return (
-              <div key={dog._id + index}>
-                <p>{label.description}</p>
-                <p>{label.probability}</p>
-              </div>
-            )
-          })}
           <button onClick={(e) => this.DogDelete(e, dog._id)}>X</button>
         </div>
       )}

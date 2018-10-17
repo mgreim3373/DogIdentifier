@@ -47,7 +47,7 @@ class DogShow extends React.Component {
   }
 
   render() {
-    const{dog, graphLables, graphData} = this.state
+    const{dog, graphLabels, graphData} = this.state
     const dogElement = dog && (
       <div className='auth-form' key={dog._id}>
         <h3>Dogs</h3>
@@ -57,11 +57,18 @@ class DogShow extends React.Component {
         <button onClick={(e) => this.DogDelete(e, dog._id)}>X</button>
       </div>
     )
-
+    let dogGraphDisplay
+    if (this.state.graphLabels[0] !== 'Not a dog!') {
+      dogGraphDisplay = <DogGraph graphLabels = {this.state.graphLabels} graphData = {this.state.graphData} />
+    } else {
+      dogGraphDisplay = <p>Not a dog!</p>
+    }
+    {console.log(this.state.graphLabels[0])}
     return (
       <div>
+        {this.state.graphLabels}
         {dogElement}
-        <DogGraph graphLabels = {this.state.graphLabels} graphData = {this.state.graphData} />
+        {dogGraphDisplay}
       </div>
     )
   }
