@@ -6,6 +6,9 @@ import { Redirect } from 'react-router-dom'
 import messages from '../messages'
 const axios = require('axios')
 import { apiUrl } from '../../apiConfig'
+import { Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button } from 'reactstrap'
+
 
 import Dropzone from 'react-dropzone'
 
@@ -83,22 +86,27 @@ class DogCreate extends React.Component {
   render() {
     const {imgSrc} = this.state
     return (
+
       <form className='auth-form' onSubmit={this.CreateDog}>
-        <h3>New Dog</h3>
-        {imgSrc !== null ?
-          <div>
-            <img src={imgSrc} />
-          </div>:
-          <Dropzone onDrop={this.handleOnDrop} accept={acceptedFileTypes}>Drag and drop image or click to select!</Dropzone>}
-        <input
-          required
-          name="description"
-          value={this.state.description}
-          type="string"
-          placeholder="Title"
-          onChange={this.handleChange}
-        />
-        <button type="submit">Create Dog</button>
+        <Card>
+          {imgSrc !== null ?
+            <CardImg top width="100%" src={imgSrc} />:
+            <Dropzone width="100%" onDrop={this.handleOnDrop} accept={acceptedFileTypes}>Drag and drop image or click to select!</Dropzone>}
+          <CardBody>
+            <CardTitle></CardTitle>
+            <CardSubtitle>Image Title</CardSubtitle>
+            <CardText>  <input
+              required
+              name="description"
+              value={this.state.description}
+              type="string"
+              placeholder="Title"
+              onChange={this.handleChange}
+            />
+            </CardText>
+            <Button type="submit">Create Dog</Button>
+          </CardBody>
+        </Card>
       </form>
     )}
 }

@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import messages from '../messages'
+import { Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button } from 'reactstrap'
 
 class DogIndex extends React.Component {
   constructor(props) {
@@ -33,16 +35,20 @@ class DogIndex extends React.Component {
 
   render() {
     const dog = this.state.dogs.map(dog => {
+
       return (
-        <div className='auth-form' key={dog._id}>
-          <h3>{dog.description}</h3>
+        <Card key={dog._id}>
           <Link to={{
             pathname: `/dogs/${dog._id}/show`,
             state: { dogId: dog._id }
-          }}><img src={dog.image} alt="dog" className="img-responsive"/></Link>
-          <button onClick={(e) => this.DogDelete(e, dog._id)}>X</button>
-        </div>
-      )}
+          }}><CardImg top width="100%" src={dog.image} alt="dog" className="img-responsive"/></Link>
+          <CardBody>
+            <CardTitle>{dog.description}</CardTitle>
+          </CardBody>
+        </Card>
+
+      )
+    }
     )
 
     return (
