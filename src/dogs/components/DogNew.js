@@ -85,18 +85,17 @@ class DogCreate extends React.Component {
     return (
       <form className='auth-form' onSubmit={this.CreateDog}>
         <h3>New Dog</h3>
-        <h5>Entering an incorrect image url can lead to long wait times.</h5>
         {imgSrc !== null ?
           <div>
             <img src={imgSrc} />
           </div>:
-          <Dropzone onDrop={this.handleOnDrop} accept={acceptedFileTypes}>hi</Dropzone>}
+          <Dropzone onDrop={this.handleOnDrop} accept={acceptedFileTypes}>Drag and drop image or click to select!</Dropzone>}
         <input
           required
           name="description"
           value={this.state.description}
           type="string"
-          placeholder="Description"
+          placeholder="Title"
           onChange={this.handleChange}
         />
         <button type="submit">Create Dog</button>

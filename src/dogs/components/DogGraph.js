@@ -7,7 +7,7 @@ const DogGraph = (props) => {
     labels: props.graphLabels,
     datasets: [
       {
-        label: 'My First dataset',
+        label: 'Confidence (%)',
         backgroundColor: 'rgba(255,99,132,0.2)',
         borderColor: 'rgba(255,99,132,1)',
         borderWidth: 1,
@@ -19,7 +19,6 @@ const DogGraph = (props) => {
   }
   return (
     <div>
-      <h2>Horizontal Bar Example</h2>
       <HorizontalBar data={data} />
     </div>
   )

@@ -35,16 +35,16 @@ class DogEdit extends React.Component {
     const {dog} = this.state
     return (
       <form className='auth-form' onSubmit={this.EditDog}>
-        <h3>Edit Dog</h3>
+        <h3>Update Title</h3>
         <input
           required
           name="description"
           value={this.state.description}
           type="string"
-          placeholder="Description"
+          placeholder="Title"
           onChange={this.handleChange}
         />
-        <button type="submit">Edit Dog</button>
+        <button type="submit">Update</button>
       </form>
     )}
 }

@@ -35,12 +35,11 @@ class DogIndex extends React.Component {
     const dog = this.state.dogs.map(dog => {
       return (
         <div className='auth-form' key={dog._id}>
-          <h3>Dog</h3>
+          <h3>{dog.description}</h3>
           <Link to={{
             pathname: `/dogs/${dog._id}/show`,
             state: { dogId: dog._id }
           }}><img src={dog.image} alt="dog" className="img-responsive"/></Link>
-          <p>{dog.description}</p>
           <button onClick={(e) => this.DogDelete(e, dog._id)}>X</button>
         </div>
       )}

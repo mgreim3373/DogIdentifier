@@ -51,9 +51,8 @@ class DogShow extends React.Component {
     const{dog, graphLabels, graphData} = this.state
     const dogElement = dog && (
       <div className='auth-form' key={dog._id}>
-        <h3>Dogs</h3>
+        <h3>{dog.description}</h3>
         <img src={dog.image} alt="dog" className="img-responsive"/>
-        <p>{dog.description}</p>
         <DogEdit user = {this.props} />
         <button onClick={(e) => this.DogDelete(e, dog._id)}>X</button>
       </div>
@@ -69,7 +68,6 @@ class DogShow extends React.Component {
 
     return (
       <div>
-        {this.state.graphLabels}
         {dogElement}
         {dogGraphDisplay}
       </div>
