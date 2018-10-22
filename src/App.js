@@ -12,6 +12,7 @@ import DogNew from './dogs/components/DogNew'
 import DogIndex from './dogs/components/DogIndex'
 import DogEdit from './dogs/components/DogEdit'
 import DogShow from './dogs/components/DogShow'
+import Home from './dogs/components/Home'
 
 class App extends Component {
   constructor () {
@@ -70,7 +71,9 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/dogs/:id/show' render={() => (
             <DogShow user={user} />
           )} />
-          <Route path='/' />
+          <Route user={user} exact path='/' render={() => (
+            <Home user={user} flash={this.flash}/>
+          )} />
 
 
         </main>
