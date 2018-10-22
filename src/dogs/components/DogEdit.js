@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom'
 import { handleErrors, CreateDog, EditDog } from '../api'
 import { Redirect } from 'react-router-dom'
 import messages from '../messages'
+import { Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button } from 'reactstrap'
 
 class DogEdit extends React.Component {
 
@@ -35,7 +37,7 @@ class DogEdit extends React.Component {
     const {dog} = this.state
     return (
       <form className='auth-form' onSubmit={this.EditDog}>
-        <h3>Update Title</h3>
+        <h5>Update Title</h5>
         <input
           required
           name="description"
@@ -44,7 +46,7 @@ class DogEdit extends React.Component {
           placeholder="Title"
           onChange={this.handleChange}
         />
-        <button type="submit">Update</button>
+        <Button className="float-left" type="submit">Update</Button>
       </form>
     )}
 }

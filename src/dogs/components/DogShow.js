@@ -6,6 +6,8 @@ import { withRouter } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
 import DogEdit from './DogEdit'
 import DogGraph from './DogGraph'
+import { Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button } from 'reactstrap'
 
 
 class DogShow extends React.Component {
@@ -49,14 +51,6 @@ class DogShow extends React.Component {
 
   render() {
     const{dog, graphLabels, graphData} = this.state
-    const dogElement = dog && (
-      <div className='auth-form' key={dog._id}>
-        <h3>{dog.description}</h3>
-        <img src={dog.image} alt="dog" className="img-responsive"/>
-        <DogEdit user = {this.props} />
-        <button onClick={(e) => this.DogDelete(e, dog._id)}>X</button>
-      </div>
-    )
     let dogGraphDisplay
     if (this.state.graphLabels[0] == 'Unknown Dog') {
       dogGraphDisplay = <p>Unknown dog!</p>
@@ -65,11 +59,21 @@ class DogShow extends React.Component {
     } else if (this.state.graphLabels[0] !== 'Not a dog!') {
       dogGraphDisplay = <DogGraph graphLabels = {this.state.graphLabels} graphData = {this.state.graphData} />
     }
+    const dogElement = dog && (
+      <Card>
+        <CardBody>
+          <CardTitle>{dog.description}</CardTitle>
+          <CardImg top width="100%" src={dog.image} alt="dog" className="img-responsive" />
+          <CardText> {dogGraphDisplay} </CardText>
+          <DogEdit user = {this.props} />
+          <Button onClick={(e) => this.DogDelete(e, dog._id)}>X</Button>
+        </CardBody>
+      </Card>
+    )
 
     return (
       <div>
         {dogElement}
-        {dogGraphDisplay}
       </div>
     )
   }

@@ -46,7 +46,6 @@ class DogIndex extends React.Component {
             <CardTitle>{dog.description}</CardTitle>
           </CardBody>
         </Card>
-
       )
     }
     )
