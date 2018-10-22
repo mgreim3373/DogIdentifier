@@ -2,21 +2,23 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import './Header.scss'
+import { Navbar, NavItem}  from 'mdbreact'
+
 
 const authenticatedOptions = (
   <React.Fragment>
-    <Link to="/change-password">Change Password</Link>
-    <Link to="/sign-out">Sign Out</Link>
-    <Link to="/dogs/new">Add Dog</Link>
-    <Link to="/dogs">View Dogs</Link>
+    <Link className="text-white" to="/change-password">Change Password</Link>
+    <Link className="text-white" to="/sign-out">Sign Out</Link>
+    <Link className="text-white" to="/dogs/new">Add Dog</Link>
+    <Link className="text-white" to="/dogs">View Dogs</Link>
 
   </React.Fragment>
 )
 
 const unauthenticatedOptions = (
   <React.Fragment>
-    <Link to="/sign-up">Sign Up</Link>
-    <Link to="/sign-in">Sign In</Link>
+    <Link className="text-white" to="/sign-up">Sign Up</Link>
+    <Link className="text-white" to="/sign-in">Sign In</Link>
   </React.Fragment>
 )
 
@@ -27,13 +29,13 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <header className="main-header">
-    <h1>Uber, But For Dogs, But Not Really..</h1>
-    <nav>
+  <header className="main-header dogNav">
+    <h1>DogIdentifier</h1>
+    <navbar className="dogNav">
       { user && <span>Welcome, {user.email}</span>}
       { user ? authenticatedOptions : unauthenticatedOptions }
       { alwaysOptions }
-    </nav>
+    </navbar>
   </header>
 )
 

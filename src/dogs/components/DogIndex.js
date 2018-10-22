@@ -7,6 +7,8 @@ import { withRouter } from 'react-router-dom'
 import messages from '../messages'
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap'
+import { Navbar } from 'mdbreact'
+import './DogIndex.scss'
 
 class DogIndex extends React.Component {
   constructor(props) {
@@ -37,7 +39,7 @@ class DogIndex extends React.Component {
     const dog = this.state.dogs.map(dog => {
 
       return (
-        <Card key={dog._id}>
+        <Card className="dog-cards" key={dog._id}>
           <Link to={{
             pathname: `/dogs/${dog._id}/show`,
             state: { dogId: dog._id }

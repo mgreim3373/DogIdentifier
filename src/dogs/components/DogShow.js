@@ -8,6 +8,7 @@ import DogEdit from './DogEdit'
 import DogGraph from './DogGraph'
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap'
+import './DogShow.scss'
 
 
 class DogShow extends React.Component {
@@ -60,7 +61,7 @@ class DogShow extends React.Component {
       dogGraphDisplay = <DogGraph graphLabels = {this.state.graphLabels} graphData = {this.state.graphData} />
     }
     const dogElement = dog && (
-      <Card>
+      <Card className="dog-card">
         <CardBody>
           <CardTitle>{dog.description}</CardTitle>
           <CardImg top width="100%" src={dog.image} alt="dog" className="img-responsive" />

@@ -70,6 +70,7 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/dogs/:id/show' render={() => (
             <DogShow user={user} />
           )} />
+          <Route path='/' />
 
 
         </main>
