@@ -4,7 +4,6 @@ import { handleErrors, ShowDog, DeleteDog } from '../api'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
-import DogEdit from './DogEdit'
 import DogGraph from './DogGraph'
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle } from 'reactstrap'
@@ -67,8 +66,11 @@ class DogShow extends React.Component {
           <CardTitle>{dog.description}</CardTitle>
           <CardImg top width="100%" src={dog.image} alt="dog" className="img-responsive" />
           <CardText> {dogGraphDisplay} </CardText>
-          <DogEdit user = {this.props} />
-          <Button className='delete-button' onClick={(e) => this.DogDelete(e, dog._id)}>Delete</Button>
+          <Link className="btn bg-dark editLink" to={{
+            pathname: `/dogs/${dog._id}/edit`,
+            state: { dogId: dog._id }
+          }}>Edit Dogs</Link>
+          <Button color="danger" className='delete-button' onClick={(e) => this.DogDelete(e, dog._id)}>Delete</Button>
         </CardBody>
       </Card>
     )

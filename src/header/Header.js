@@ -32,7 +32,7 @@ const alwaysOptions = (
 const Header = ({ user }) => (
   <header className="main-header dogNav">
     <h1>DogIdentifier</h1>
-    <navbar className="dogNav">
+    <navbar className="dogNav d-flex justify-content-center">
       { user && <span>Welcome, {user.email}</span>}
       { user ? authenticatedOptions : unauthenticatedOptions }
       { alwaysOptions }

@@ -88,7 +88,7 @@ class DogCreate extends React.Component {
     const {imgSrc} = this.state
     return (
 
-      <form className='auth-form' onSubmit={this.CreateDog}>
+      <form className='auth-form dogNewForm mt-5' onSubmit={this.CreateDog}>
         <Card className="dog-cards">
           {imgSrc !== null ?
             <CardImg top width="100%" src={imgSrc} />:

@@ -28,7 +28,7 @@ class DogEdit extends React.Component {
     event.preventDefault()
     const { image, description, _id } = this.state
     const { history, user } = this.props
-    EditDog(this.state, user.user, this.props.location.state.dogId)
+    EditDog(this.state, user, this.props.location.state.dogId)
       .then(handleErrors)
       .then(() => history.push('/dogs/'))
   }
