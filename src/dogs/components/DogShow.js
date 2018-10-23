@@ -7,7 +7,8 @@ import { Redirect } from 'react-router-dom'
 import DogEdit from './DogEdit'
 import DogGraph from './DogGraph'
 import { Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button } from 'reactstrap'
+  CardTitle, CardSubtitle } from 'reactstrap'
+import { Button, Input }  from 'mdbreact'
 import './DogShow.scss'
 
 
@@ -54,9 +55,9 @@ class DogShow extends React.Component {
     const{dog, graphLabels, graphData} = this.state
     let dogGraphDisplay
     if (this.state.graphLabels[0] == 'Unknown Dog') {
-      dogGraphDisplay = <p>Unknown dog!</p>
+      dogGraphDisplay = <h2>Unknown dog!</h2>
     } else if (this.state.graphLabels[0] == 'Not a dog!') {
-      dogGraphDisplay = <p>Not a dog!</p>
+      dogGraphDisplay = <h2>Not a dog!</h2>
     } else if (this.state.graphLabels[0] !== 'Not a dog!') {
       dogGraphDisplay = <DogGraph graphLabels = {this.state.graphLabels} graphData = {this.state.graphData} />
     }
@@ -67,7 +68,7 @@ class DogShow extends React.Component {
           <CardImg top width="100%" src={dog.image} alt="dog" className="img-responsive" />
           <CardText> {dogGraphDisplay} </CardText>
           <DogEdit user = {this.props} />
-          <Button onClick={(e) => this.DogDelete(e, dog._id)}>X</Button>
+          <Button className='delete-button' onClick={(e) => this.DogDelete(e, dog._id)}>Delete</Button>
         </CardBody>
       </Card>
     )

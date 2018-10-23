@@ -51,6 +51,9 @@ $charcoal: #bbb;
 a:link {
     font-weight: bold;
 }
+a:link:hover {
+  text-shadow: 1.5px 1.5px black;
+}
 .dogNav {
   color: white;
   background-color: rgb(163, 230, 255);

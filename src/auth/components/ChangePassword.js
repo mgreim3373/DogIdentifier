@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { handleErrors, changePassword } from '../api'
 import messages from '../messages'
 import apiUrl from '../../apiConfig'
+import { Button, Input }  from 'mdbreact'
 
 class ChangePassword extends Component {
   constructor () {
@@ -40,24 +41,26 @@ class ChangePassword extends Component {
         <h3>Change Password</h3>
 
         <label htmlFor="oldpw">Old Password</label>
-        <input
+        <Input
+          label="Type your old password"
+          icon="lock"
           required
           name="oldPassword"
           value={oldPassword}
           type="password"
-          placeholder="Old Password"
           onChange={this.handleChange}
         />
         <label htmlFor="newPassword">New Password</label>
-        <input
+        <Input
+          label="Type your new password"
+          icon="lock"
           required
           name="newPassword"
           value={newPassword}
           type="password"
-          placeholder="New Password"
           onChange={this.handleChange}
         />
-        <button type="submit">Change Password</button>
+        <Button type="submit">Change Password</Button>
       </form>
     )
   }

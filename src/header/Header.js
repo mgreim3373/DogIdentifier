@@ -7,18 +7,19 @@ import { Navbar, NavItem}  from 'mdbreact'
 
 const authenticatedOptions = (
   <React.Fragment>
-    <Link className="text-white" to="/change-password">Change Password</Link>
-    <Link className="text-white" to="/sign-out">Sign Out</Link>
-    <Link className="text-white" to="/dogs/new">Add Dog</Link>
+    <Link className="text-white" to="/dogs/new">Identify Dog</Link>
     <Link className="text-white" to="/dogs">View Dogs</Link>
+    <Link className="text-white" to="/sign-out">Sign Out</Link>
+    <Link className="text-white" to="/change-password">Change Password</Link>
+
 
   </React.Fragment>
 )
 
 const unauthenticatedOptions = (
   <React.Fragment>
-    <Link className="text-white" to="/sign-up">Sign Up</Link>
     <Link className="text-white" to="/sign-in">Sign In</Link>
+    <Link className="text-white" to="/sign-up">Sign Up</Link>
   </React.Fragment>
 )
 

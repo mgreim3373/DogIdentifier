@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { signIn } from '../api'
 import messages from '../messages'
 import apiUrl from '../../apiConfig'
+import { Button, Input }  from 'mdbreact'
 
 class SignIn extends Component {
   constructor () {
@@ -39,9 +40,11 @@ class SignIn extends Component {
 
     return (
       <form className='auth-form' onSubmit={this.signIn}>
-        <h3>Sign In</h3>
+        <h3 className="font-weight-bold">Sign In</h3>
         <label htmlFor="email">Email</label>
-        <input
+        <Input
+          label="Type your email address"
+          icon="envelope"
           required
           type="email"
           name="email"
@@ -50,7 +53,9 @@ class SignIn extends Component {
           onChange={this.handleChange}
         />
         <label htmlFor="password">Password</label>
-        <input
+        <Input
+          label="Type your password"
+          icon="lock"
           required
           name="password"
           value={password}
@@ -58,7 +63,7 @@ class SignIn extends Component {
           placeholder="Password"
           onChange={this.handleChange}
         />
-        <button type="submit">Sign In</button>
+        <Button type="submit">Sign In</Button>
       </form>
     )
   }

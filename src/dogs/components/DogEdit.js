@@ -5,7 +5,8 @@ import { handleErrors, CreateDog, EditDog } from '../api'
 import { Redirect } from 'react-router-dom'
 import messages from '../messages'
 import { Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button } from 'reactstrap'
+  CardTitle, CardSubtitle } from 'reactstrap'
+import { Input, Button } from 'mdbreact'
 
 class DogEdit extends React.Component {
 
@@ -37,8 +38,9 @@ class DogEdit extends React.Component {
     const {dog} = this.state
     return (
       <form className='auth-form' onSubmit={this.EditDog}>
-        <h5>Update Title</h5>
-        <input
+        <h5 className="font-weight-bold">Update Title</h5>
+        <Input
+          label="Image title"
           required
           name="description"
           value={this.state.description}

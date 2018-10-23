@@ -7,7 +7,8 @@ import messages from '../messages'
 const axios = require('axios')
 import { apiUrl } from '../../apiConfig'
 import { Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button } from 'reactstrap'
+  CardTitle, CardSubtitle } from 'reactstrap'
+import { Button, Input }  from 'mdbreact'
 
 
 import Dropzone from 'react-dropzone'
@@ -88,23 +89,24 @@ class DogCreate extends React.Component {
     return (
 
       <form className='auth-form' onSubmit={this.CreateDog}>
-        <Card>
+        <Card className="dog-cards">
           {imgSrc !== null ?
             <CardImg top width="100%" src={imgSrc} />:
-            <Dropzone width="100%" onDrop={this.handleOnDrop} accept={acceptedFileTypes}>Drag and drop image or click to select!</Dropzone>}
+            <Dropzone width="100%" onDrop={this.handleOnDrop} accept={acceptedFileTypes}>Drag and drop image or click to select</Dropzone>}
           <CardBody>
             <CardTitle></CardTitle>
-            <CardSubtitle>Image Title</CardSubtitle>
-            <CardText>  <input
-              required
-              name="description"
-              value={this.state.description}
-              type="string"
-              placeholder="Title"
-              onChange={this.handleChange}
-            />
+            <CardText>
+              <Input
+                label=" Image Title"
+                required
+                name="description"
+                value={this.state.description}
+                type="string"
+                onChange={this.handleChange}
+                placeholder="Title"
+              />
             </CardText>
-            <Button type="submit">Create Dog</Button>
+            <Button type="submit">Identify</Button>
           </CardBody>
         </Card>
       </form>
