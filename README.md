@@ -1,18 +1,10 @@
 ## Dog Identifier
 
-This app represents my General Assembly cap stone project. It is a custom built interactive web application for identifying dog breeds from pictures and storing them. It utilizes Saas, Google Vision’s API and a custom built API.
-
-## About
-
-This project was started with the goal of creating a single page React application to interact with my API using Fetch. The project began by creating wireframes and user stories to ensure that the project met requirements. I then planned out what components I would need and how they would interact. The next stage of the project was to build out the application in React and JSX, and connect it to the API using Fetch. Finally, styling was applied using CSS and bootstrap. I ran into several issues during this project, but I eventually solved the majority of them by researching the problems online, going through web tutorials and consulting colleagues.
-
-## Unsolved Problems
-
-I plan on updating this project in the future with added styling and allowing users to upload and store their own images on AS3. I ran into some issues connecting to Google Vision's API and running a POST to it programatically.
+This app represents my General Assembly capstone project. It is a interactive React app for identifying dog breeds from user pictures and storing them. It utilizes Google Vision’s API, Amazon S3 and a custom built Express API.
 
 ## List of Technologies Used
 
-React, JSX, HTML, Sass, Bootstrap, Github, custom built API, Google Vision API, Fetch API
+React, Reactstrap, Chart.js, custom built Express API, Google Vision API, Amazon S3, Axios
 
 ## Installation Instructions
 
@@ -23,11 +15,11 @@ React, JSX, HTML, Sass, Bootstrap, Github, custom built API, Google Vision API, 
 
 ## Project Links
 
-Front-end deployed site: https://mgreim3373.github.io/DogIdentifier/#/
+Front-end deployed site: https://mgreim3373.github.io/DogIdentifier-Front-End/#/
 
 Back-end deployed site: https://pure-wildwood-82080.herokuapp.com/
 
-Back-end repo: https://github.com/mgreim3373/DogIdentifier---BackEnd
+Back-end repo: https://github.com/mgreim3373/DogIdentifier-Back-End
 
 ## Wireframes and User Stories
 
@@ -38,11 +30,5 @@ Wireframe(add_dog): https://github.com/mgreim3373/DogIdentifier/blob/master/Wire
 Wireframe(sign_in): https://github.com/mgreim3373/DogIdentifier/blob/master/Wire_Frame-Sign_In.jpg
 
 User stories: https://github.com/mgreim3373/DogIdentifier/blob/master/Wire_Frame-Sign_In.jpg
-
-## Application Screenshots 
-
-![Display Dog Page](https://github.com/mgreim3373/DogIdentifier/blob/master/ShowDog.jpg?raw=true)
-![Create Dog Page](https://github.com/mgreim3373/DogIdentifier/blob/master/CreateDog.jpg?raw=true)
-![login Page](https://github.com/mgreim3373/DogIdentifier/blob/master/Login.jpg?raw=true)
 
 
