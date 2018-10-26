@@ -32,3 +32,4 @@ Wireframe(sign_in): https://github.com/mgreim3373/DogIdentifier/blob/master/Wire
 User stories: https://github.com/mgreim3373/DogIdentifier/blob/master/Wire_Frame-Sign_In.jpg
 
 
+![alt text](https://github.com/mgreim3373/DogIdentifier-Front-End/blob/master/Graph-ScreenShot.png?raw=true)
